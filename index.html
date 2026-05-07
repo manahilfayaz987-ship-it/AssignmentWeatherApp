@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <input type="text" placeholder="Enter city name">
+    <button>Get Weather</button>
+    <h3></h3>
+</body>
+<script>
+    let input = document.querySelector("input")
+    let btn = document.querySelector("button")
+    let text = document.querySelector("h3")
+
+    //https://api.openweathermap.org/data/2.5/weather?q=peshawar&appid=560dc8bfa2794a7872a2c953177e7dd9
+    btn.addEventListener("click" , ()=>{
+        let cityName = input.value
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=560dc8bfa2794a7872a2c953177e7dd9&units=metric`)
+    .then(response => response.json())
+    .then(data => {
+        text.textContent = `Current Temp of  ${cityName} is ${data.main.temp}`
+    })
+    })
+
+    
+
+</script>
+</html>
